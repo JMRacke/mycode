@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import random
 
 my_list = [ "192.168.0.5", 5060, "UP" ]
 
@@ -12,3 +13,21 @@ iplist = [ 5060, "80", 55, "10.0.0.1","10.20.30.1","ssh" ]
 
 print(iplist[3],iplist[4])
 
+wordbank = ["indentation","spaces"]
+
+
+tlgstudents= ['Albert', 'Anthony', 'Brenden', 'Craig', 'Deja', 'Elihu', 'Eric', 'Giovanni', 'James', 'Joshua', 'Maria', 'Mohamed', 'PJ', 'Philip', 'Sagan', 'Suchit', 'Meka', 'Trey', 'Winton', 'Xiuxiang', 'Yaping']
+
+wordbank.append(4)
+
+num = int(input("Enter a number between 0 and 20: "))
+
+student_name = tlgstudents.pop(num)
+
+print(f"{student_name} always uses {wordbank[-1]} {wordbank[1]} to indent.")
+
+num = random.randint(0,len(tlgstudents))
+
+student_name = tlgstudents[num]
+
+print(f"{student_name} always uses {wordbank[-1]} {wordbank[1]} to indent.")
