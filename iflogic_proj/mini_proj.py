@@ -34,6 +34,7 @@ questions = {"1":{"question": "How many Grand Theft Auto games have been release
                   },
                   "correct":"d"}
             }
+
 def main():
     print(f"Welcome to video game trivia!")
     while True:
