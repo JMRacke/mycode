@@ -13,6 +13,7 @@ try: # try to do this
     configfile = input('Filename: ')
     with open(configfile, 'r') as configfileobj:
         switchconfig = configfileobj.read()
+        configfileobj.readline()
 except: # if any errors occurred
     x = 'General error with obtaining configuration file!'
 else: # if there were no errors
