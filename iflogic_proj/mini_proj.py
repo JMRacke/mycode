@@ -8,7 +8,7 @@
 import os # Allows to clear screen (on linux i did not write logic for other os)
 import questions as q # imports the questions.py with the alias q
 
-questions = q.questions # Stores the questions to a variable because I was too lazy to rewrite the code when I hid the questions in another file
+questions = q.questions # Stores the questions from the question module to a variable
 
 # This function will take in a list of strings in the format str,digit and split it, sort it, and print it
 def sortAndPrintList():
@@ -16,12 +16,12 @@ def sortAndPrintList():
     
     try:
         with open('scores.txt', 'r') as scores:
-            playerscores = scores.readlines()
+            playerscores = scores.readlines() # Reads all lines and stores as a list of strings
     except:
         with open('scores.txt', 'w') as scores:
             scores.close()
 
-    if isinstance(playerscores, list): # Will only print out the high scores if it find a list in the file (prevents going through code if file blank)
+    if isinstance(playerscores, list): # Will only print out the high scores if it finds a list in the file (prevents going through code if file blank)
         print(f"The current top players are: \n")
 
         # Variables declared and initialized to a base value
@@ -57,9 +57,8 @@ def sortAndPrintList():
 
         # Prints out the list
         for i in range(len(playerListSorted)):
-            print(f"{str(i+1) + '. ':4}{playerListSorted[i]:16}     {scoreListSorted[i]}") # the :20 adds up to 20 characters after the name so the scores show up aligned
-
-    
+            print(f"{str(i+1) + '. ':4}{playerListSorted[i]:21}{scoreListSorted[i]}") # the :20 adds up to 20 characters after the name so the scores show up aligned
+  
 # Appends the user's score to the high score list
 def addScore(name,score): # Takes in two parameters a string and integer
     with open('scores.txt', 'a') as file:
@@ -87,7 +86,7 @@ def main(): # Main method
 
             # Formats the question and answers
             query = value.get("question")
-            print(f"\nQuestion {key}: {query}?")
+            print(f"\nQuestion {key}: {query}")
             for option, answer in value.get("options").items():
                 print(f"{option.upper()}- {answer}")
 

@@ -1,4 +1,4 @@
-questions = {"1":{"question": "How many Grand Theft Auto games have been release?",
+questions = {"1":{"question": "How many Grand Theft Auto games have been released?",
                   "options": {
                     "a":"12",
                     "b":"5",
@@ -6,7 +6,7 @@ questions = {"1":{"question": "How many Grand Theft Auto games have been release
                     "d":"9"
                   },
                   "correct":"c"},
-             "2":{"question": "In what year was the classic game 'Lemmings' release?",
+             "2":{"question": "In what year was the classic game 'Lemmings' released?",
                   "options": {
                     "a":"1991",
                     "b":"1995",
