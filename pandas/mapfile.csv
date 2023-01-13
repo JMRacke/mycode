@@ -1,0 +1,6 @@
+,Hall,Den,Kitchen,Dining Room,Garden
+south,Kitchen,,,Garden,
+east,Dining Room,Hall,,,
+west,Den,,,Hall,
+item,,key,monster,potion,
+north,,,Hall,,Dining Room
