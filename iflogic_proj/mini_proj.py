@@ -6,9 +6,9 @@
     Files: mini_proj.py, questions.py
 """
 import os # Allows to clear screen (on linux i did not write logic for other os)
-import questions as q # imports the questions.py with the alias q
+from questions import questions # imports the questions.py with the alias q
 
-questions = q.questions # Stores the questions from the question module to a variable
+# questions = q.questions # Stores the questions from the question module to a variable
 
 
 def sortandprintlist():
