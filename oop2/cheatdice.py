@@ -27,12 +27,27 @@ class Cheat_Loaded_Dice(Player):
                 self.dice[i] += 1
             i += 1
 
+class Cheat_Mulligan(Player):
+    def cheat(self):
+        if sum(self.dice) <= 9:
+            self.roll()
+
+class Cheat_Additional(Player):
+    # Roll an additional die
+    def cheat(self):
+        self.dice.append(randint(1,6))
+        self.dice.sort(reverse=True)
+        self.dice = self.dice[0:3]
+
 def main():
     """Runs only if this module is directly run"""
-    player1 = Player()
+    player1 = Cheat_Additional()
 
     player1.roll()
+    
+    print(player1.dice)
 
+    player1.cheat()
     print(player1.dice)
 
 if __name__ == "__main__":
