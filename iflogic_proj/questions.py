@@ -1,3 +1,5 @@
+"""Question bank for use"""
+
 questions = {"1":{"question": "How many Grand Theft Auto games have been released?",
                   "options": {
                     "a":"12",
