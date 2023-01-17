@@ -34,7 +34,7 @@ def showStatus(currentRoom):
     """determine the current status of the player"""
     # print the player's current location
     print('---------------------------')
-    print('You are in the ' + currentRoom)
+    # print('You are in the ' + currentRoom)
     # Description of room is displayed
     print(rooms[currentRoom]['description'])
     # print what the player is carrying
@@ -48,7 +48,7 @@ def showStatus(currentRoom):
 def main():
     # Shows what the user can do
     showInstructions()
-    currentRoom = 'Hall'
+    currentRoom = 'Lobby'
     # breaking this while loop means the game is over
     while True:
         if rooms == None:
@@ -56,9 +56,25 @@ def main():
         showStatus(currentRoom)
 
         ## If a player enters a room with a monster
-        if 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
-            print("A monster has got you... GAME OVER!")
-            break
+        if 'items' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['items']:
+            if 'cleaver' in player1.inventory:
+               rooms[currentRoom]['items'].pop(rooms[currentRoom]['items'].index('monster'))
+               print("There is a monster in the room that immediately lunges at you.")
+               print("You deftly roll away from it's attack and counter with a blow")
+               print("from the meat cleaver. The monster knocks you away as you do but")
+               print("its wound is fatal. The cleaver broke in the process.")
+               player1.inventory.pop(player1.inventory.index('cleaver'))
+            elif 'potion' in player1.inventory:
+                print("As you enter the room, a giant monster leaps across and") 
+                print("knocks you back into the previous room. Luckily you had a")
+                print("potion to heal you wounds. You won't get past that way without")
+                print("some way of defeating it.")
+                player1.inventory.pop(player1.inventory.index('potion'))
+                currentRoom = "Hall_02"
+                continue
+            else: 
+                print("A monster leaps from across the room and eats you! .... GAME OVER")
+                break
 
         ## Define how a player can win
         if currentRoom == 'Garden' and 'key' in player1.inventory and 'potion' in player1.inventory:
