@@ -10,7 +10,7 @@
 
 # imports always go at the top of your code
 import requests
-
+import json
 # Define our "base" API
 API = "https://api.magicthegathering.io/v1/" # this will never change regardless of the lookup we perform
 
@@ -25,8 +25,9 @@ def main():
     # the .json() method will dump a JSON string into Pythonic data structures. COOL!
     # This is much easier than using the urllib.request library
     cards = resp.json()
+    
     with open('cards.json','w') as wfile:
-        print(resp, file=wfile)
+        json.dump(cards,wfile)
 
 if __name__ == "__main__":
     main()
