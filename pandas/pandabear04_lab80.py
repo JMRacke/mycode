@@ -13,7 +13,7 @@ def main():
 
     ## print to the screen the re-indexed dataframe
     print(ciscodf)
-
+    
     ## print a blankline
     print()
 
@@ -22,14 +22,14 @@ def main():
 
     ## export to csv
     ciscodf.to_csv("combined_ciscodata.csv")
-
+    
     ## export to Excel
     ciscodf.to_excel("combined_ciscodata.xls")
-
+    
     ## create a python dictionary
     x = ciscodf.to_dict()
     print(x)
-
+    
 if __name__ == "__main__":
     main()
 

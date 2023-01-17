@@ -27,12 +27,12 @@ rooms = {
           "south" : "Kitchen",
         },
     "Hall_02" : {
-          "description" : "The hallway stretches north toward a large room. To the south is the lobby.",
+          "description" : "The hallway stretches north toward a large room.\nTo the south is the lobby.",
           "south" : "Lobby",
           "north" : "Main Room"
         },
     "Main Room" : {
-        "description": "This must be the main entertaining room of the house. In the corner is a dusty grand piano. There are couches everywhere for guests to sit at. There are doorways in all directions.",
+        "description": "This must be the main entertaining room of the house.\nIn the corner is a dusty grand piano.\nThere are couches everywhere for guests to sit at.\nThere are doorways in all directions.",
         "west" : "Hall_03",
         "south" : "Hall_02",
         "north" : "Hall_04",
