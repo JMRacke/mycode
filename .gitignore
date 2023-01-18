@@ -1,4 +1,6 @@
-echo "*.log" >> ~/mycode/.gitignore
-echo "*.creds" >> ~/mycode/.gitignore
-echo "*.key" >> ~/mycode/.gitignore
-echo "id_rsa*" >> ~/mycode/.gitignore
+*.log
+*.creds
+*.key
+id_rsa*
+.git
+.gitignore
