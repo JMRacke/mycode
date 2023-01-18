@@ -10,12 +10,12 @@ from Player import Player
 
 # Create a player
 player1 = Player()
-
+currentRoom = 'Lobby'
 
 def showInstructions():
     """Show the game instructions when called"""
     #print a main menu and the commands
-    print('''
+    print(f'''
     RPG Game
     ========
     Commands:
@@ -24,13 +24,16 @@ def showInstructions():
       help - Displays these commands
       exit - Quits program
       inventory - Display items in inventory
+      {'inspect - search for anything out of place' if currentRoom == 'Study' else ''}
+      {'push - push a button' if currentRoom == 'Study' else ''}
     --------
     Objective:
-      Escape the house with they key and potion
-      Beware of monsters!
+     Survive the haunted mansion.
+     Find the [diamond] and a way to escape!
+     Beware of monsters! 
     ''')
 
-def showStatus(currentRoom):
+def showStatus():
     """determine the current status of the player"""
     # print the player's current location
     print('---------------------------')
@@ -53,7 +56,7 @@ def main():
     while True:
         if rooms == None:
             break
-        showStatus(currentRoom)
+        showStatus()
 
         ## If a player enters a room with a monster
         if 'items' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['items']:
