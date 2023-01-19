@@ -7,6 +7,7 @@
             <td>Address</td>
             <td>City</td>
             <td>Pincode</td>
+            <td>Remove?</td>
          </thead>
          
          {% for row in rows %}
@@ -14,7 +15,8 @@
                <td>{{ row["name"] }}</td>
                <td>{{ row["addr"] }}</td>
                <td>{{ row["city"] }}</td>
-               <td>{{ row["pin"] }}</td>	
+               <td>{{ row["pin"] }}</td>
+               <td><a href="/remove?name={{row['name']}}" method="DELETE">X</a></td>	
             </tr>
          {% endfor %}
       </table>

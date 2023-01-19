@@ -14,6 +14,8 @@ import sqlite3 as sql
 from flask import Flask
 from flask import render_template
 from flask import request
+from flask import redirect
+from flask import url_for
 
 app = Flask(__name__)
 
@@ -70,9 +72,15 @@ def list_students():
 
     return render_template("list.html",rows = rows) # return all of the sqliteDB info as HTML
 
-# use a HTTP DELETE to remove an entry from the table
-@app.route('/remove', methods = ['DELETE'])
+
+@app.route('/remove',methods = ['GET'])
 def remove():
+    name_to_remove = request.args.get("name")
+    return redirect(url_for("removed"),name_to_remove)
+
+# use a HTTP DELETE to remove an entry from the table
+@app.route('/removed', methods = ['DELETE'])
+def removed():
     try:  # HTTP DELETE arrives at /remove?name=<name in DB to remove>
 
         name_to_remove = request.args.get("name") # peel off arguments and capture name to be removed
