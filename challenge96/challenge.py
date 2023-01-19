@@ -3,6 +3,7 @@
 
 import requests
 import random
+import html
 
 
 URL= "https://opentdb.com/api.php?amount=10&category=11&difficulty=medium&type=multiple" 
@@ -12,7 +13,7 @@ def ask_question(question):
     answers.extend(question['incorrect_answers'])
     letters = 'ABCD'
     options = {}
-    print(question['question'])
+    print(html.unescape(question['question']))
     for i in range(4):
         rand = random.randint(0,(len(answers)-1))
         options[letters[i]] = answers.pop(rand)
