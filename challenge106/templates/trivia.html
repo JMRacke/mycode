@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trivia!</title>
+    
+</head>
+<body>
+    <form action = "/trivia" method = "POST">
+        <h6>User: {{ user }}</h6>
+        <p>Your score is: {{ score }}</p>
+        <h2>{{question}}</h2>
+        {% for opt in opts %}
+        <input type="radio" name="answer" value="{{opt}}">{{opt}}<br>
+        {% endfor %}
+        <!-- <h5>{{ opt1 }}</h5>
+        <h5>{{ opt2 }}</h5>
+        <h5>{{ opt3 }}</h5>
+        <h5>{{ opt4 }}</h5> -->
+        <!-- <h6>Which choice do you think it is?</h6>
+        <p><input type = "text" name = "choice"></p> -->
+        <p><input type = "submit" value = "submit"></p>
+    </form>
+</body>
+</html>

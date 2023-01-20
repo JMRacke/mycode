@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CORRECT!</title>
+    
+</head>
+<body>
+    {% if ans == True %}
+        <div style="width: 95vw"><h1 style="font-size: 90%;">CORRECT!</h1></div>
+    {% else %}
+        <div style="width: 95vw"><h1 style="font-size: 90%;">WRONG!</h1></div>
+    {% endif %}
+    <p>Your score is: {{ score }}</p>
+    <a href="/trivia">Go Again!</a>
+</body>
+</html>
