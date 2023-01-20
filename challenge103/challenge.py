@@ -11,14 +11,7 @@ import html
 
 
 app = Flask(__name__)
-
-@app.route("/login")
-def login():
-    return render_template("login.html")
-
-@app.route("/trivlogin",methods=["POST"])
-def trivlogin():
-    return redirect(url_for("trivia",name=request.form.get("nm")))
+CORRECT_ANSWER = ""
 
 @app.route("/correct")
 def correct():
@@ -29,35 +22,39 @@ def incorrect():
     return render_template("wrong.html") 
 
 @app.route("/trivia")
-def trivia(name):
-    url= f"https://opentdb.com/api.php?amount=10&category={random.randint(1,31)}&difficulty=medium&type=multiple"
+def trivia():
+    global CORRECT_ANSWER
+    url= f"https://opentdb.com/api.php?amount=10"
     data = requests.get(url).json()
     pydata = data['results']
-    qdict = pydata.pop(random.randint(0,(len(pydata)-1)))
+    qdict = pydata[3]
     question = html.unescape(qdict['question']) # question to send
+    CORRECT_ANSWER = qdict['correct_answer']
     answers = [qdict['correct_answer']]
     answers.extend(qdict['incorrect_answers'])
     letters = 'ABCD'
     options = {}
     opts = []
     for i in range(4):
-        rand = random.randint(0,(len(answers)-1))
-        options[letters[i]] = html.unescape(answers.pop(rand))
+        if len(answers) > 1:
+            rand = random.randint(0,(len(answers)-1))
+        else:
+            rand = 0
+        if len(answers) > 0:
+            options[letters[i]] = html.unescape(answers.pop(rand))
     for let in options:
         opts.append(options.get(let))
-    opt1 = opts[0]
-    opt2 = opts[1]
-    opt3 = opts[2]
-    opt4 = opts[3]
+    
     correct = qdict['correct_answer']
     
-    return render_template("trivia.html",question = question,opt1 = opt1,opt2=opt2,opt3=opt3,opt4=opt4,correct=qdict['correct_answer'])
+    return render_template("trivia.html",question = question,opts = opts)
 
 @app.route("/submit",methods=["POST"])
 def submit():
-    print(request.form.get("choice"))
-    print(request.form.get("correct"))
-    if request.form.get("choice") == request.form.get("correct"):
+    global CORRECT_ANSWER
+    print(request.form.get("answer"))
+    print(CORRECT_ANSWER)
+    if request.form.get("answer") == CORRECT_ANSWER:
         return redirect(url_for("correct"))
     else:
         return redirect(url_for("incorrect"))
